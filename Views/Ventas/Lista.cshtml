@@ -1,0 +1,210 @@
+﻿@model IEnumerable<GestorBiblioteca.Models.Entidades.Venta>
+@{
+    ViewData["Title"] = "Lista de Ventas";
+}
+
+@section Estilos {
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #1a1a2e;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .alert {
+            font-weight: bold;
+            border-radius: 8px;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+            .alert strong {
+                font-size: 1.1em;
+            }
+
+        /* Estilos del contenedor de la tarjeta */
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        .card-header {
+            background-color: #2d3a56;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+        }
+
+            .card-header h5 {
+                margin: 0;
+                font-size: 1.5em;
+            }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+            .table th, .table td {
+                padding: 12px;
+                text-align: center;
+                border-bottom: 1px solid #f1f1f1;
+            }
+
+            .table th {
+                background-color: #f7f9fc;
+                color: #3498db;
+            }
+
+            .table td {
+                font-size: 0.9em;
+                color: #2c3e50;
+            }
+
+        .table-hover tbody tr:hover {
+            background-color: #ecf0f1;
+        }
+
+        .btn {
+            border-radius: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .btn:hover {
+                transform: scale(1.05);
+            }
+
+        .btn-primary {
+            background-color: #3498db;
+            border-color: #2980b9;
+        }
+
+            .btn-primary:hover {
+                background-color: #2980b9;
+            }
+
+        .btn-outline-warning {
+            color: #f39c12;
+            border-color: #f39c12;
+        }
+
+            .btn-outline-warning:hover {
+                background-color: #f39c12;
+                color: #fff;
+            }
+
+        .btn-outline-info {
+            color: #16a085;
+            border-color: #16a085;
+        }
+
+            .btn-outline-info:hover {
+                background-color: #16a085;
+                color: #fff;
+            }
+
+        .btn-outline-danger {
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+            .btn-outline-danger:hover {
+                background-color: #e74c3c;
+                color: #fff;
+            }
+
+        .deleteItem i, .fa-trash, .fa-pencil-alt, .fa-cart-shopping {
+            font-size: 1.2em;
+        }
+
+        /* Imágenes de los libros */
+        .book-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header text-center">
+            <h5>Libros Vendidos</h5>
+        </div>
+        <div class="card-body text-dark">
+            <div class="table-responsive">
+                <table id="venta" class="table table-sales table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.Id</th>
+                                <td>@item.Fecha.ToString("dd-MM-yyyy")</td>
+                                <td>@Html.DisplayFor(modelItem => item.Usuario.NombreUsuario)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Libro.Titulo)</td>
+                                <td>@item.Libro.Precio.ToString("C2")</td>
+                                <td>@item.Cantidad</td>
+                                <td>@item.Total.ToString("C2")</td>
+                                <td><img src="@item.Libro.URLImagen" width="100" height="100"></td>
+                                <td class="action-buttons">
+                                    <!-- Aquí puedes agregar botones para editar o eliminar ventas si es necesario -->
+                                    <!-- Ejemplo de un botón de acción: -->
+                                    <button data-id="@item.Id" class="btn btn-outline-danger btn-sm deleteItem" data-bs-toggle="modal" data-bs-target="#deleteDialog">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer text-dark">
+            <p><strong>Total vendido: @ViewBag.SumaTotal.ToString("C2")</strong></p>
+            <p><strong>Total vendido HOY: @ViewBag.SumaDiaria.ToString("C2")</strong></p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#venta').DataTable({
+                "language": {
+                    url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+                },
+                "columnDefs": [
+                    { "orderable": false, "targets": [8] } // Para deshabilitar el orden en la columna de "Acciones"
+                ]
+            });
+        });
+    </script>
+}

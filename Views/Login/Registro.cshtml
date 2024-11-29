@@ -1,0 +1,109 @@
+﻿@model GestorBiblioteca.Models.Entidades.Usuario
+@{
+    ViewData["Title"] = "Registro";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #1a1a2e; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card border-0 shadow-lg" style="background: linear-gradient(145deg, #16213e, #1a1a2e); border-radius: 15px; width: 100%; max-width: 420px;">
+            <div class="card-header border-0 text-center py-4" style="background: transparent;">
+                <h3 class="text-light mb-0" style="font-weight: 600;">Crear Cuenta</h3>
+                <p class="text-light mt-2">Regístrate para comenzar</p>
+            </div>
+            <div class="card-body px-4 py-4">
+                <form asp-controller="Login" asp-action="Registro" method="post" enctype="multipart/form-data">
+                    <div class="form-floating mb-4">
+                        <input class="form-control bg-light text-dark border-0"
+                               type="text"
+                               placeholder="Nombre Completo"
+                               asp-for="NombreUsuario"
+                               required
+                               style="border-radius: 10px; height: 55px;" />
+                        <label class="text-muted">
+                            <i class="fas fa-user me-2"></i>Nombre Completo
+                        </label>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input class="form-control bg-light text-dark border-0"
+                               type="email"
+                               placeholder="Correo"
+                               required
+                               asp-for="Correo"
+                               style="border-radius: 10px; height: 55px;" />
+                        <label class="text-muted">
+                            <i class="fas fa-envelope me-2"></i>Correo electrónico
+                        </label>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input class="form-control bg-light text-dark border-0"
+                               type="password"
+                               placeholder="Contraseña"
+                               required
+                               asp-for="Clave"
+                               style="border-radius: 10px; height: 55px;" />
+                        <label class="text-muted">
+                            <i class="fas fa-lock me-2"></i>Contraseña
+                        </label>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="text-light mb-2 d-block">
+                            <i class="fas fa-image me-2"></i>Foto de perfil (Obligatorio)
+                        </label>
+                        <input type="file"
+                               class="form-control bg-dark text-light border-0"
+                               name="Imagen"
+                               accept="image/*"
+                               style="border-radius: 10px;" />
+                    </div>
+
+                    <div class="d-grid gap-2 mb-4">
+                        <button class="btn btn-primary py-3"
+                                type="submit"
+                                style="border-radius: 10px; background: linear-gradient(45deg, #4d7bf3, #5e60ce); border: none; font-weight: 600; font-size: 1.1rem;">
+                            <i class="fas fa-user-plus me-2"></i>Crear Cuenta
+                        </button>
+                    </div>
+
+                    @if (ViewData["Mensaje"] != null)
+                    {
+                        <div class="alert alert-danger border-0 rounded-3" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            @ViewData["Mensaje"]
+                        </div>
+                    }
+
+                    <div class="text-center mt-4">
+                        <p class="text-light">
+                            ¿Ya tienes una cuenta?
+                            <a href="@Url.Action("IniciarSesion","Login")"
+                               class="text-primary text-decoration-none fw-bold">
+                                ¡Inicia sesión aquí!
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
