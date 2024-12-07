@@ -58,8 +58,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Usuario/source/repos/GestorBiblioteca/GestorBiblioteca/Views/Libros/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXENyZWFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/GestorBiblioteca/GestorBiblioteca/Views/Libros/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXEVkaXRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Usuario/source/repos/GestorBiblioteca/GestorBiblioteca/Views/Libros/Lista.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXExpc3RhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/GestorBiblioteca/GestorBiblioteca/Views/Libros/Vender.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXFZlbmRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Usuario/source/repos/GestorBiblioteca/GestorBiblioteca/Views/Login/IniciarSesion.cshtml]
@@ -84,6 +96,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Usuario/source/repos/GestorBiblioteca/GestorBiblioteca/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/source/repos/GestorBiblioteca/GestorBiblioteca/Views/Ventas/Lista.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudGFzXExpc3RhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Usuario/source/repos/GestorBiblioteca/GestorBiblioteca/Views/_ViewImports.cshtml]

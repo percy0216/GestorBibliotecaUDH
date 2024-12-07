@@ -54,11 +54,11 @@ namespace GestorBiblioteca.Controllers
         [HttpPost]
         public async Task<IActionResult> IniciarSesion(string correo, string clave)
         {
-            // Captura la respuesta del CAPTCHA desde el formulario
+            
             var captchaResponse = Request.Form["g-recaptcha-response"];
-            var secretKey = "6LfEE4wqAAAAAHAihN0YL-hqxE_UGZBcFW2BW0V4"; // Reemplaza con tu clave secreta de Google reCAPTCHA
+            var secretKey = "6LfEE4wqAAAAAHAihN0YL-hqxE_UGZBcFW2BW0V4"; 
 
-            // Valida el CAPTCHA utilizando la API de Google reCAPTCHA
+            
             using (var client = new HttpClient())
             {
                 var response = await client.PostAsync(
